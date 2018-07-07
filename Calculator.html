@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <style type="text/css">
+    *{
+        margin:0;
+        padding: 0;
+    }
+        .Calculate{
+            border-radius: 8px;
+            width: 310px;
+            height: 350px;
+            background-color: #C47335;
+            text-align: center;
+            margin: 100px auto;
+            border: 1px solid #C47335;
+        }
+        h1{
+            margin-top: 10px;
+            font-size: 17px;
+            color: #F19953;
+        }
+        .textbox{
+            border: none;
+            text-align: right;
+            width: 275px;
+            height: 25px;
+            background-color: #F19953;
+            margin-top: 10px;
+        }
+        .button{
+            margin:10px auto;
+            width: 275px;
+            text-align: center;
+        }
+        .button button{
+            width: 64.75px;
+            border: none;
+            height: 50px;
+            cursor: pointer;
+            background-color: #fff;
+            color: #F19953;
+            float: left;
+            display: inline-block;
+            margin:2px;
+
+        }
+    </style>
+</head>
+<body style="background-color:#56351E;">
+    <div class="Calculate">
+        <h1>FreeCodeCamp Calculator</h1>
+        <input type="text" name="textbox" class="textbox" readonly="">
+        <div class="button">
+            <button value="AC">AC</button>
+            <button value="CE">CE</button>
+            <button value="%">%</button>
+            <button value="/">/</button>
+            <button value="7">7</button>
+            <button value="8">8</button>
+            <button value="9">9</button>
+            <button value="*">*</button>
+            <button value="4">4</button>
+            <button value="5">5</button>
+            <button value="6">6</button>
+            <button value="-">-</button>
+            <button value="1">1</button>
+            <button value="2">2</button>
+            <button value="3">3</button>
+            <button value="+">+</button>
+            <button value=".">.</button>
+            <button value="0">0</button>
+            <button value="Ans">Ans</button>
+            <button value="=">=</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var ans;
+        var s="";
+        $('button').click(function(){
+            var text=$(this).text();
+            if(parseInt(text,10)==text||text==='+'||text==='*'||text==='/'||text==='-'||text==='.'||text==='%'){
+                s+=text;
+                $('.textbox').val(s);
+
+            }else if (text==='AC') {
+                s="";
+                $('.textbox').val(s);
+            }else if(text==='CE'){
+                s=s.substring(0,s.length-1);
+                $('.textbox').val (s);
+            }else if (text==='='){
+                var a=$('.textbox').val();
+                ans=eval(a);
+                $('.textbox').val(ans);
+                s="";
+            }
+        })
+    </script>
+</body>
+</html>
